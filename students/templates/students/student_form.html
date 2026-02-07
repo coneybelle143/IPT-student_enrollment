@@ -1,6 +1,32 @@
-<h2>Edit Student</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+{% extends 'students/base.html' %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin: 0 auto;">
+    <h2 style="color: #2c3e50; border-bottom: 2px solid #18bc9c; padding-bottom: 10px;">
+        Update Student Information
+    </h2>
+
+    <p style="color: #7f8c8d;">Modify the details below and save your changes.</p>
+
+    <form method="POST" style="background: #ffffff; border: 1px solid #ddd; padding: 25px;">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="submit" 
+                    style="background-color: #3498db;" 
+                    onclick="return confirm('Are you sure you want to save these changes?');">
+                Save Changes
+            </button>
+
+            <a href="{% url 'student_list' %}" 
+               style="text-decoration: none; color: #95a5a6; margin-left: 15px; font-weight: bold;">
+               Cancel
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

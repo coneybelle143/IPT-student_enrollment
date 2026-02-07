@@ -24,7 +24,11 @@
         <tr>
             <td>{{ e.student.fullname }}</td> <td>{{ e.course.course_name }}</td> <td>{{ e.course.teacher.teacher_name }}</td> <td>{{ e.enrollment_date }}</td> <td>
                 <a href="{% url 'enrollment_update' e.pk %}" class="btn-edit">Edit</a> | 
-                <a href="{% url 'enrollment_delete' e.pk %}" class="btn-delete">Cancel</a>
+                <a href="{% url 'enrollment_delete' e.pk %}" 
+                    class="btn-delete" 
+                    onclick="return confirm('Are you sure you want to CANCEL this enrollment? \n\nStudent: {{ e.student.fullname }}\nCourse: {{ e.course.course_name }}');">
+                    Cancel
+                </a>
             </td>
         </tr>
         {% empty %}

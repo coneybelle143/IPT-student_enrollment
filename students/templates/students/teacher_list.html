@@ -17,7 +17,11 @@
         <td>{{ t.department }}</td>
         <td>
             <a href="{% url 'teacher_update' t.pk %}" class="btn-edit">Edit</a> | 
-            <a href="{% url 'teacher_delete' t.pk %}" class="btn-delete">Delete</a>
+            <a href="{% url 'teacher_delete' t.pk %}" 
+                class="btn-delete" 
+                onclick="return confirm('Are you sure you want to permanently delete Teacher {{ t.teacher_name }}?');">
+                Delete
+            </a>
         </td>
     </tr>
     {% empty %}

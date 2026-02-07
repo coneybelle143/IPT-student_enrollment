@@ -1,10 +1,32 @@
 {% extends 'students/base.html' %}
+
 {% block content %}
-<h2>Edit Teacher</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update Teacher</button>
-    <a href="{% url 'teacher_list' %}">Cancel</a>
-</form>
+<div class="container" style="max-width: 600px; margin: 0 auto;">
+    <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">
+        Update Teacher Profile
+    </h2>
+
+    <p style="color: #7f8c8d;">Update the department or name for this instructor.</p>
+
+    <form method="POST" style="background: #ffffff; border: 1px solid #ddd; padding: 25px;">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="submit" 
+                    style="background-color: #18bc9c;" 
+                    onclick="return confirm('Confirm changes to this teacher profile?');">
+                Update Teacher
+            </button>
+
+            <a href="{% url 'teacher_list' %}" 
+               style="text-decoration: none; color: #95a5a6; margin-left: 15px; font-weight: bold;">
+               Cancel
+            </a>
+        </div>
+    </form>
+</div>
 {% endblock %}
