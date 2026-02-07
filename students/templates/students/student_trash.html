@@ -1,0 +1,25 @@
+<h2>Recycle Bin (Deleted Students)</h2>
+
+<table border="1" style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    {% for s in students %}
+    <tr>
+        <td>{{ s.fullname }}</td>
+        <td>{{ s.email }}</td>
+        <td>
+            <a href="{% url 'student_restore' s.pk %}">Restore Student</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">The trash is empty!</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'student_list' %}">Back to Active Students</a>

@@ -1,0 +1,36 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+    <h2>Course Enrollment</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enroll Student</button>
+    </form>
+
+    <hr>
+
+    <h3>Current Enrollments</h3>
+    <table border="1" style="width:100%">
+        <tr>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Instructor</th>
+            <th>Enrollment Date</th>
+            <th>Actions</th>
+        </tr>
+        {% for e in enrollments %}
+        <tr>
+            <td>{{ e.student.fullname }}</td> <td>{{ e.course.course_name }}</td> <td>{{ e.course.teacher.teacher_name }}</td> <td>{{ e.enrollment_date }}</td> <td>
+                <a href="{% url 'enrollment_update' e.pk %}" class="btn-edit">Edit</a> | 
+                <a href="{% url 'enrollment_delete' e.pk %}" class="btn-delete">Cancel</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No students are currently enrolled.</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
