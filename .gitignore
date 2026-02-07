@@ -1,0 +1,17 @@
+# --- Python Junk ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Databases (KEEP YOUR DATA PRIVATE) ---
+db.sqlite3
+db.sqlite3-journal
+
+# --- Environments ---
+.venv/
+venv/
+env/
+
+# --- IDEs ---
+.vscode/
+.idea/
